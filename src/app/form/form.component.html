@@ -1,0 +1,18 @@
+<form #form="ngForm" (ngSubmit)="diffuse(form.value['prompt'])">
+    <div id="form" class="form-group">
+        <label for="Prompt">Prompt</label><br />
+        <input #prompt="ngModel" minlength="3" maxlength="100" type="text" name="prompt" class="form-control" ngModel required="true" />
+        <!--ng model add a status to the input-->
+        <div *ngIf="prompt.invalid; else second">
+            <p *ngIf="prompt.errors?.['required']">The prompt is required</p>
+            <p *ngIf="prompt.errors?.['minlength']">
+                Prompt needs to be more than 3 letters or more
+            </p>
+        </div>
+        <h1>{{ form.value["prompt"] | json }}</h1>
+    </div>
+    <br />
+    <ng-template #second>
+        <button type="submit" class="custom-btn btn-7">generate</button>
+    </ng-template>
+</form>

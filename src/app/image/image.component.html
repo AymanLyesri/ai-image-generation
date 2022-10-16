@@ -1,0 +1,7 @@
+<div *ngIf="shared.getLink() != null">
+    <img src="{{ shared.getLink() }}" alt="{{ shared.getName() }}" class="gradient-border" />
+</div>
+
+<h1 *ngIf="shared.getLink() == null && shared.getName() != null">
+    Image not loaded : NSFW
+</h1>
