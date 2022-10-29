@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { SharedService } from '../shared/shared.service';
 import { SpinnerService } from '../spinner/spinner.service';
 
@@ -18,7 +19,7 @@ export class FormService {
     this.spinner.startSpinner();
     this.shared.setName(null);
     
-    this.http.get("/api/diffuse", { params: { prompt: prompt } }).subscribe((Response) =>
+    this.http.get(environment.API, { params: { prompt: prompt } }).subscribe((Response) =>
     {
 
       console.log(Response);
